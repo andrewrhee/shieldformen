@@ -1,9 +1,9 @@
 Shieldformen::Application.routes.draw do
   get "static_pages/home"
 
-  get "static_pages/how-it-works"
+  get "static_pages/works"
 
-  get "static_pages/grooming-tips"
+  get "static_pages/tips"
 
   get "static_pages/about"
 

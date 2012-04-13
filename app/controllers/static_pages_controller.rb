@@ -2,10 +2,10 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def how-it-works
+  def works
   end
 
-  def grooming-tips
+  def tips
   end
 
   def about
