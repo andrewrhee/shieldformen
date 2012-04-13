@@ -2,63 +2,45 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
-	let(:base_title) { "Shield For Men" }
+	subject { page }
 
 	describe "Home page" do
+		before { visit root_path }
 
-		it "should have the h1 'Home'" do
-			visit '/static_pages/home'
-			page.should have_selector('h1', 
-												:text => 'Take Your Lifestyle To The Next Level')
-		end
-
-		it "should have the title 'Grooming Products For Men'" do
-			visit '/static_pages/home'
-			page.should have_selector('title',
-												:text => "Grooming Products For Men | #{base_title}")
-		end
+		it { should have_selector('h1', 
+												text: 'Take Your Lifestyle To The Next Level') }
+		it { should have_selector('title',
+												text: full_title('Grooming Products For Men'))  }
 
 	end
 
 	describe "Works page" do
-		it "should have the h1 'How It Works'" do
-			visit '/static_pages/works'
-			page.should have_selector('h1', 
-													:text  => 'How It Works')
-		end
+		before { visit works_path }
 
-		it "should have the title 'How It Works'" do
-			visit '/static_pages/works'
-			page.should have_selector('title',
-												:text => "How It Works | #{base_title}")
-		end
+		it { should have_selector('h1', 
+												text: 'How It Works') }
+		it { should have_selector('title',
+												text: full_title('How It Works')) }
+
 	end
 
 	describe "Tips page" do
-		it "should have the h1 'Grooming Tips'" do
-			visit '/static_pages/tips/'
-			page.should have_selector('h1',
-													:text => 'Grooming Tips')
-		end
+		before { visit tips_path }
 
-		it "should have the title 'Grooming Tips'" do
-			visit '/static_pages/tips'
-			page.should have_selector('title',
-												:text => "Grooming Tips | #{base_title}")
-		end
+		it { should have_selector('h1',
+												text: 'Grooming Tips') }
+
+
+		it { should have_selector('title',
+												text: full_title('Grooming Tips')) }
 	end
 
 	describe "About page" do
-		it "should have the h1 'About Us'" do
-			visit '/static_pages/about/'
-			page.should have_selector('h1',
-													:text => 'About Us')
-		end
+		before { visit about_path }
 
-		it "should have the title 'About Us'" do
-			visit '/static_pages/about'
-			page.should have_selector('title',
-												:text => "About Us | #{base_title}")
-		end
+		it { should have_selector('h1',
+												text: 'About Us') }
+		it { should have_selector('title',
+												text: full_title('About Us')) }
 	end
 end

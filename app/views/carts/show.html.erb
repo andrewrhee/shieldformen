@@ -1,0 +1,27 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<div id="content">  
+<div class="shopping-cart">
+	<h2>Your Shopping Cart</h2>
+	<div class="sc-wrapper">
+		<p>Please use this form to update your shopping cart. You may change the quantities, move items to your wish list for future purchasing, or remove items entirely. The shipping and handling cost is based upon the order total. When you are ready to complete your purchase, please click Checkout to be taken to a secure page for processing.</p>
+		<table id="cart">
+			<%= render @cart %>
+		</table>
+		<div class="update_cart">
+			<a href="#"><img src="<%= image_path "update_cart.png" %>" alt="update_cart" width="180" height="60" border="0" /></a>
+		</div><!-- end update_cart -->
+		<div class="checkout">
+			<a href="#"><img src="<%= image_path "checkout.png" %>" alt="checkout" width="180" height="60" border="0" /></a>
+		</div><!-- end checkout -->
+		<div class="clearfix"></div>
+	</div><!-- end sc-wrapper -->
+	</div><!-- end shopping-cart -->	
+</div><!-- end content -->
+
+<div class="clearfix"></div>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

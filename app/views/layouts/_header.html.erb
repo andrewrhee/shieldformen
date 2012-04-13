@@ -1,0 +1,83 @@
+<div id="header">
+			<%= link_to "shieldformen", root_path, id: "logo" %>
+
+			<div class="clearfix"></div>
+			<nav>
+				<ul class="menu lgray" id="menu">
+
+					<li><%= link_to "Home", 			root_path %></li>
+
+					<li><%= link_to "Products", 	store_path %>
+						<!-- start mega menu -->
+						<div class="cols3">
+							<div class="col3">
+								<h4>Choose one of our products below.</h4>
+							</div>
+							<div class="col1">
+								<h5>Cleanser</h5>
+								<ol>
+								    <li><a href="#">Wash + Protect</a></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Moisturizer</h5>
+								<ol>
+								    <li><a href="#">Moisturize + Shield</a></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Paragraph</h5>
+								<p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...</p>
+							</div>
+						</div>
+						<!-- end mega menu -->
+					</li>
+
+					<li><%= link_to "How It Works", 	works_path %></li>
+
+					<li><%= link_to "Grooming Tips",  tips_path %></li>
+
+					<li><%= link_to "Our Blog", 			'http://blog.shieldformen.com', 
+										:target => "_blank" %></li>
+
+					<li><%= link_to "About Us", 			about_path %></li>
+
+					<li class="floatr"><%= link_to "View Cart", carts_path %>
+						<!-- start mega menu -->
+						<div class="cols3" id="styles">
+							<div class="col3"><h4>Pick a style</h4></div>
+							<div class="col1">
+								<h5>Small</h5>
+								<ol>
+								    <li><a href="#sgray">Gray</a></li>
+									<li><a href="#sblack">Black</a></li>
+									<li><a href="#sblue">Blue</a></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Medium</h5>
+								<ol>
+								    <li><a href="#mgray">Gray</a></li>
+									<li><a href="#mblack">Black</a></li>
+									<li><a href="#mblue">Blue</a></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Large</h5>
+								<ol>
+								    <li><a href="#lgray">Gray</a></li>
+									<li><a href="#lblack">Black</a></li>
+									<li><a href="#lblue">Blue</a></li>
+								</ol>
+							</div>
+						</div>
+						<!-- end mega menu -->
+					</li>
+				</ul>
+			</nav>
+			
+			
+			
+			
+		</div><!-- end header -->
+		<div class="clearfix"></div>

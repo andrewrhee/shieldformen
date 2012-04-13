@@ -1,0 +1,64 @@
+<div id="content">  
+      
+  <div class="product-image">
+    <img src="<%= image_path @product.image_url %>" alt="" border="0" />
+  </div><!-- end product-image -->
+  
+  <div class="product-info">
+    <h2><%= @product.name %></h2>
+    
+    <p>Price: <span class="price"><%= number_to_currency(@product.price) %></span></p>
+    
+    <p>Sizes:</p>
+    <select class="productSelect" name="sizes">
+      <option value="4 oz.">4 oz.</option>
+    </select>
+    
+    <p>Fragrance:</p>
+    <select class="productSelect" name="fragrance">
+      <option value="fragrance free">Fragrance Free</option>
+    </select>
+    
+    <div class="add_to_cart">
+      <%= link_to image_tag("add_to_cart.png"),  line_items_path(product_id: @product.id), method: :post %>
+    </div>
+    
+  </div><!-- end product-info -->
+
+  <div class="clearfix"></div>
+  <hr />
+  
+    <div class="image-thumbnails">
+      <a href="#"><img src="<%= image_path "thumbnail.png" %>" alt="thumbnail" width="59" height="60" border="0" /></a>
+      <a href="#"><img src="<%= image_path "thumbnail.png" %>" alt="thumbnail" width="59" height="60" border="0" /></a>
+      <a href="#"><img src="<%= image_path "thumbnail.png" %>" alt="thumbnail" width="59" height="60" border="0" /></a>
+    </div><!-- end image-thumbnails -->
+  
+    <div id="tabbed_box_1" class="tabbed_box">
+    <div class="tabbed_area">
+    
+      <ul class="tabs">
+        <li><a href="#" title="content_1" class="tab active">Description</a></li>
+        <li><a href="#" title="content_2" class="tab">Key Ingredients</a></li>
+      </ul>
+    
+  
+      <div id="content_1" class="content">
+        <%= strip_tags(@product.description) %>
+      </div><!-- end description -->
+    
+      
+      <div id="content_2" class="content">
+        <p><ul><li><strong>Vitamin E</strong> - anti-inflammatory, antioxidant, emollient</li><li><strong>Pro-vitamin B</strong> – soothing, calming</li><li><strong>Tea Tree Oil</strong> – medicinal: acne, burns, rashes, skin immune deficiencies, and sebum regulation for oily skin</li><li><strong>Green Tea Extract</strong> – antioxidant, soothing anti-inflammatory</li><li><strong>Ylang Ylang E.O.</strong> – antibacterial, antiseptic, anti-sebum</li><li><strong>Patchouli E.O.</strong> – anti bacterial, anti-inflammatory, antiseptic, antistringent, cell-regenerating</li><li><strong>Rosewood E.O.</strong> – cell regenerator, antiseptic</li><li><strong>Cedarwood E.O.</strong> – regenerative, cleansing</li></ul></p>
+      </div><!-- end ingredients -->
+      
+      
+    </div><!-- end tabbed_area -->
+    </div><!-- end tabbed_box_1 -->
+  
+  <div class="clearfix"></div>
+
+  
+  
+</div><!-- end content -->
+<div class="clearfix"></div>

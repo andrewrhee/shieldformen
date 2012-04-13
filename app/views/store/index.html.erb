@@ -1,0 +1,14 @@
+<div id="content">  
+	<div class="category">
+		<h1>Products</h1>
+	<% @products.each do |product| %>
+	<div class="category-listing">
+		<a href="<%= product_path(product.id) %>"><img src="<%= image_path "ribbon.png" %>" class="ribbon" /><img class="category-image" src="<%= image_path product.image_url %>" alt="category-image" width="210" height="210" border="0" /></a>
+		<a href="#"><h3><%= product.name %></h3></a>
+	</div><!-- end category-listing -->
+	<% end %>
+	
+	</div><!-- end category -->
+	<div class="clearfix"></div>
+</div><!-- end content -->
+<div class="clearfix"></div>

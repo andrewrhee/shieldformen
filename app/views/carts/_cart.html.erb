@@ -1,0 +1,16 @@
+<tr>
+	<th>Quantity</th>
+	<th>Item</th>
+	<th>Unit Price</th>
+	<th>Total</th>
+	<th>Remove</th>
+</tr>
+<%= render (cart.line_items) %>
+<tr>
+	<td colspan="3" class="shipping_label">Shipping &amp; Handling:</td>
+	<td class="shipping_price">$0</td>
+</tr>
+<tr>
+	<td colspan="3" class="total_label">Total:</td>
+	<td class="total_price"><%= number_to_currency(@cart.total_price) %></td>
+</tr>
