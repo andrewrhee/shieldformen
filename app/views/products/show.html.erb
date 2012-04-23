@@ -1,5 +1,12 @@
 <div id="content">  
-      
+  <% if notice %>
+    <p class="notification notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="notification alert">
+      <%= alert %>
+    </p>
+  <% end %>
   <div class="product-image">
     <img src="<%= image_path @product.image_url %>" alt="" border="0" />
   </div><!-- end product-image -->
@@ -9,10 +16,12 @@
     
     <p>Price: <span class="price"><%= number_to_currency(@product.price) %></span></p>
     
+    <% @product.sizes.each do |size| %>
     <p>Sizes:</p>
     <select class="productSelect" name="sizes">
-      <option value="4 oz.">4 oz.</option>
+      <option value="<%= size.size %>"><%= size.size %></option>
     </select>
+    <% end %>
     
     <p>Fragrance:</p>
     <select class="productSelect" name="fragrance">

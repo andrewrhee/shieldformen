@@ -8,6 +8,21 @@ Shieldformen::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Don't actually send emails
+  # config.action_mailer.delivery_method = :test
+  #
+  # Alternate configuration example, using gmail:
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:        "temp.shieldformen.com",
+    port:           993, 
+    domain:         "shieldformen.com",
+    authentication: "plain",
+    user_name:      "info@shieldformen.com",
+    password:       "Exc3ll3nc3",
+    enable_starttls_auto: true
+  } 
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
@@ -64,4 +79,12 @@ Shieldformen::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  # Makes sure ActiveMerchant runs in production mode in production
+  config.after_initialize do 
+    ActiveMerchant::Billing::Base.mode = :production
+    ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+      :login => "65LhZ6uh",
+      :password => "7Jbp6Me549j8z2MG"
+    )
+  end
 end

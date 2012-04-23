@@ -1,0 +1,35 @@
+<div id="content">
+<h1>Listing discounts</h1>
+
+<table>
+  <tr>
+    <th>Discount code</th>
+    <th>Site name</th>
+    <th>Site url</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discounts.each do |discount| %>
+  <tr>
+    <td><%= discount.discount_code %></td>
+    <td><%= discount.site_name %></td>
+    <td><%= discount.site_url %></td>
+    <td><%= discount.description %></td>
+    <td><%= discount.user_id %></td>
+    <td><%= discount.order_id %></td>
+    <td><%= link_to 'Show', discount %></td>
+    <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
+    <td><%= link_to 'Destroy', discount, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discount', new_discount_path %>
+</div>

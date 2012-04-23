@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  skip_before_filter :authorize, only: [:create, :decrement]
   # GET /line_items
   # GET /line_items.json
   def index
@@ -43,7 +44,7 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
-
+    
 
     respond_to do |format|
       if @line_item.save
@@ -95,6 +96,31 @@ class LineItemsController < ApplicationController
     # 2nd way: decrement through method in @line_item
     @line_item = @cart.line_items.find_by_id(params[:id])
     @line_item = @line_item.decrement_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {@current_item = @line_item}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def increment
+    @cart = current_cart
+
+    # 1st way: increment through method in @cart
+    #@line_item = @cart.increment_line_item_quantity(params[:id]) # passing in line_item.id
+
+    # 2nd way: increment through method in @line_item
+    @line_item = @cart.line_items.find_by_id(params[:id])
+    @line_item = @line_item.increment_quantity(@line_item.id)
 
     respond_to do |format|
       if @line_item.save

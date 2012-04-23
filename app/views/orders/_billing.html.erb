@@ -1,0 +1,165 @@
+<div class="form">
+	
+	<div id="RegisterErrors" style="display:none"></div>
+	<%= form_for(@order) do |f| %>
+		<%= render 'error_messages' %>
+
+		<fieldset>
+
+			<h3>Your Shipping Information</h3>
+			<p>Please enter your shipping information below. Please check the first box if your shipping and billing addresses are the same. * Indicates a required field.</p>
+			
+			<h3>Shipping Method</h3>
+			<p>
+				<%= f.label :shipping, '* Shipping:' %>
+				<%= f.select :shipping, Order::SHIPPING_METHOD,
+											{ prompt: 'Select a shipping method' }, 
+											:class => 'formInputSelect' %>
+			</p>
+			
+			<h3>Shipping Address</h3>
+			
+			<div id="shipping_fields">
+			<p>
+				<%= f.label :ship_to_first_name, '* First Name:' %>
+				<%= f.text_field :ship_to_first_name, :size => 50, 
+							:class => 'formInputText' %>
+			</p>	
+			
+			<p>
+				<%= f.label :ship_to_last_name, '* Last Name:' %>
+				<%= f.text_field :ship_to_last_name, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+
+			<p>
+				<%= f.label :ship_to_address, '* Address:' %>
+				<%= f.text_field :ship_to_address, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+				
+			<p>
+				<%= f.label :ship_to_city, '* City:' %>
+				<%= f.text_field :ship_to_city, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+				
+			<p>
+				<%= f.label :ship_to_state, '* State:' %>
+				<%= f.select :ship_to_state, Order::STATES,
+											{ prompt: 'Select a state' }, 
+											:class => 'formInputSelect' %>
+			</p>
+			
+			<p>
+				<%= f.label :ship_to_postal_code, '* Zip Code:' %>
+				<%= f.text_field :ship_to_postal_code, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+
+			<p>
+				<%= f.label :phone_number, '* Phone:' %>
+				<%= f.text_field :phone_number, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+			
+			<p>
+				<%= f.label :email, '* Email:' %>
+				<%= f.text_field :email, :size => 50, 
+							:class => 'formInputText' %>
+			</p>
+
+			<input type="checkbox" id="copyaddress">
+
+			<em>Check this box if Billing Address and Shipping Address are the same.</em>
+			</div><!-- end shipping_fields -->
+
+			<h3>Billing Address</h3>
+			<div id="billing_fields">
+				<p>
+					<%= f.label :bill_to_first_name, '* First Name:' %>
+					<%= f.text_field :bill_to_first_name, :size => 50, 
+							:class => 'formInputText' %>
+				</p>
+					
+				<p>
+					<%= f.label :bill_to_last_name, '* Last Name:' %>
+					<%= f.text_field :bill_to_last_name, :size => 50, 
+							:class => 'formInputText' %>
+				</p>
+					
+				<p>
+					<%= f.label :bill_to_address, '* Address:' %>
+					<%= f.text_field :bill_to_address, :size => 50, 
+							:class => 'formInputText' %>
+				</p>
+					
+				<p>
+					<%= f.label :bill_to_city, '* City:' %>
+					<%= f.text_field :bill_to_city, :size => 50, 
+							:class => 'formInputText' %>
+				</p>
+				<p>
+					<%= f.label :bill_to_state, '* State:' %>
+					<%= f.select :bill_to_state, Order::STATES,
+											{ prompt: 'Select a state' }, 
+											:class => 'formInputSelect' %>
+				</p>
+				<p>
+					<%= f.label :bill_to_postal_code, '* Zip Code:' %>
+					<%= f.text_field :bill_to_postal_code, :size => 50, 
+								:class => 'formInputText' %>
+				</p>
+				</div><!-- end billing_fields -->
+
+			<h3>Your Billing Information</h3>
+
+				<p>Please enter your billing information below. Then click 'Place Order' to complete your order. For your security, we will not store your billing information in any way. We accept Visa, MasterCard, American Express, and Discover.</p>
+				
+				<br/>
+				
+				<h3>Credit Card Information</h3>
+				<p>
+					<%= f.label :card_type, '* Card Type:' %>
+					<%= f.select :card_type, Order::CARD_TYPES,
+											{ prompt: 'Select Card Type' },
+											:class => 'formInputSelect' %>
+				</p>
+
+				<p>
+					<%= f.label :card_number, '* Card Number:' %>
+					<%= f.text_field :card_number, :size => 50, 
+							:class => 'formInputText' %>
+				</p>	
+				
+				<p>
+					<%= f.label :card_expiraton_month, '* Expiration Month:' %>
+					<%= f.select :card_expiration_month, Order::CARD_EXPIRATION_MONTHS,
+											{ prompt: 'Month' }, 
+											:class => 'formInputSelect' %>
+				</p>
+
+				<p>
+					<%= f.label :card_expiraton_year, '* Expiration Year:' %>
+					<%= f.select :card_expiration_year, Order::CARD_EXPIRATION_YEAR,
+											{ prompt: 'Year' }, 
+											:class => 'formInputSelect' %>
+				</p>
+				
+				<p>
+					<%= f.label :card_verification_value, '* Verification Code:' %>
+					<%= f.text_field :card_verification_value, :size => 3, 
+							:class => 'formInputText', :id => 'cc_cvv' %>
+					<div class="cvv_image"><img src="<%= image_path "mini_cvv2.gif" %>" class="mini_cvv" alt="mini_cvv" border="0" /></div><div class="help"><a href="/ccv2" target="_blank">What is this?</a></div>
+				</p>
+
+				<br/>
+				
+				
+			<div class="checkout-button">
+				<%= image_submit_tag("place_order.png") %>
+			</div><!-- end checkout-button -->
+		</fieldset>
+
+	<% end %>
+</div><!-- end form -->

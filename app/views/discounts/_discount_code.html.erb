@@ -1,0 +1,10 @@
+<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert] %></p>
+<% end %>
+<%= form_for(@discount) do |f| %>
+<p>
+	<%= f.label :discount_code, 'Discount Code:' %>
+	<%= f.text_field :discount_code, :size => 30, :class => 'formInputText' %>
+	<%= f.submit 'Apply', :class => "large button green" %>
+</p>
+<% end %>

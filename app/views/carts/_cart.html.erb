@@ -1,16 +1,40 @@
-<tr>
-	<th>Quantity</th>
-	<th>Item</th>
-	<th>Unit Price</th>
-	<th>Total</th>
-	<th>Remove</th>
-</tr>
-<%= render (cart.line_items) %>
-<tr>
-	<td colspan="3" class="shipping_label">Shipping &amp; Handling:</td>
-	<td class="shipping_price">$0</td>
-</tr>
-<tr>
-	<td colspan="3" class="total_label">Total:</td>
-	<td class="total_price"><%= number_to_currency(@cart.total_price) %></td>
-</tr>
+
+<div class="sc-wrapper">	
+
+		<table id="cart">
+			<% if @cart.line_items.empty? %>
+				<p>Your shopping cart is empty.</p>
+			<% else %>
+			<tr>
+				<th align="center">Quantity</th>
+				<th align="center">Item</th>
+				<th align="center">Unit Price</th>
+				<th align="center">Subtotal</th>
+				<th align="center">Add/Remove</th>
+			</tr>
+			
+				<%= render (@cart.line_items) %>
+			<tr>
+				<td colspan="3" class="shipping_label first" align="right"><span style="align: right;"><strong>Shipping &amp; Handling</strong></span></td>
+				<td colspan="1" class="shipping_price last" align="right">$0.00</td>
+			</tr>
+			<% if session[:discount] == 'true' %>
+			<tr>
+				<td colspan="3" class="shipping_label first" align="right"><span style="align: right;"><strong>Discount Applied</strong></span></td>
+				<td colspan="1" class="shipping_price last" align="right">- <%= number_to_currency(@cart.total_price - @cart.discount_price) %></td>
+			</tr>
+			<% end %>
+			<tr>
+				<td colspan="3" class="total_label first" align="right"><strong>Total</strong></td>
+				<td colspan="1" class="total_price last" align="right">
+					<% if session[:discount] == 'true' %>
+						<%= number_to_currency(@cart.discount_price) %>
+					<% else %>
+						<%= number_to_currency(@cart.total_price) %>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+
+</div><!-- end sc-wrapper -->

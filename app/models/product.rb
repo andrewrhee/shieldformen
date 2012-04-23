@@ -2,8 +2,10 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :image_url, :name, :price, :size_id, :stock
 
   has_many :line_items
+  has_many :orders, through: :line_items
+  has_many :sizes
 
-  validates :name, :description, :image_url, :stock, :size_id, presence: true
+  validates :name, :description, :image_url, :stock, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :name, uniqueness: true
   validates :image_url, allow_blank: true, format: { 

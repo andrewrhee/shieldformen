@@ -14,6 +14,12 @@
 								<h4>Choose one of our products below.</h4>
 							</div>
 							<div class="col1">
+								<h5>Packages</h5>
+								<ol>
+								    <li><a href="#">Full Package</a></li>
+								</ol>
+							</div>
+							<div class="col1">
 								<h5>Cleanser</h5>
 								<ol>
 								    <li><a href="#">Wash + Protect</a></li>
@@ -25,6 +31,7 @@
 								    <li><a href="#">Moisturize + Shield</a></li>
 								</ol>
 							</div>
+
 							<div class="col1">
 								<h5>Paragraph</h5>
 								<p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...</p>
@@ -42,34 +49,60 @@
 
 					<li><%= link_to "About Us", 			about_path %></li>
 
+					<% if session[:user_id] %>
+					<li class="floatr"><%= link_to "Admin", admin_path %>
+						<div class="cols4">
+							<div class="col1">
+								<h5>Orders</h5>
+								<ol>
+									<li><%= link_to 'List Orders', orders_path %></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Products</h5>
+								<ol>
+									<li><%= link_to 'List Products', products_path %></li>
+									<li><%= link_to 'Add Product', new_product_path %></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Sizes</h5>
+								<ol>
+									<li><%= link_to 'List Sizes', sizes_path %></li>
+									<li><%= link_to 'Add Size', new_size_path %></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Users</h5>
+								<ol>
+									<li><%= link_to 'List Users', users_path %></li>
+									<li><%= link_to 'Add User', new_user_path %></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Discounts</h5>
+								<ol>
+									<li><%= link_to 'List Discount Codes', discounts_path %></li>
+									<li><%= link_to 'Add Discount Code', new_discount_path %></li>
+								</ol>
+							</div>
+							<div class="col1">
+								<h5>Logout</h5>
+								<ol>
+									<li><%= link_to 'Logout', logout_path, method: :delete %></li>
+								</ol>
+							</div>
+						</div>
+					</li>
+					<% end %>
+
 					<li class="floatr"><%= link_to "View Cart", carts_path %>
 						<!-- start mega menu -->
 						<div class="cols3" id="styles">
-							<div class="col3"><h4>Pick a style</h4></div>
-							<div class="col1">
-								<h5>Small</h5>
-								<ol>
-								    <li><a href="#sgray">Gray</a></li>
-									<li><a href="#sblack">Black</a></li>
-									<li><a href="#sblue">Blue</a></li>
-								</ol>
-							</div>
-							<div class="col1">
-								<h5>Medium</h5>
-								<ol>
-								    <li><a href="#mgray">Gray</a></li>
-									<li><a href="#mblack">Black</a></li>
-									<li><a href="#mblue">Blue</a></li>
-								</ol>
-							</div>
-							<div class="col1">
-								<h5>Large</h5>
-								<ol>
-								    <li><a href="#lgray">Gray</a></li>
-									<li><a href="#lblack">Black</a></li>
-									<li><a href="#lblue">Blue</a></li>
-								</ol>
-							</div>
+							<div class="col3"><h4>Your Shopping Cart</h4></div>
+
+								<%= render('orders/shoppingcart') %>
+
 						</div>
 						<!-- end mega menu -->
 					</li>

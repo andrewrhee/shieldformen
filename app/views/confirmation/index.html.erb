@@ -1,0 +1,41 @@
+<div id="content"> 
+	<% if notice %>
+		<p class="notification notice">
+			<%= notice %>
+		</p>
+		<div class="final-checkout">
+		<h2>Checkout</h2>
+		<div class="checkout-wrapper">
+			<img src="<%= image_path "progress_bar2.png" %>" alt="progress bar 2" width="881" height="53" border="0" />
+			<hr />
+			<h3>Your Order is Complete</h3>
+			<p>Thank you for order (#<%= session[:order_id] %>). Please use this order number in any correspondence with us.</p>
+			<br />
+			<p>A charge of <%= number_to_currency(session[:order_price]) %> will appear on your credit card when the order ships. All orders are processed on the next business day. You will be contacted in case of delays.</p>
+			<br />
+			<p>An email confirmation has been sent to your email address. Click here to create a printable receipt of your order.</p>
+
+			<br />
+			<div class="clearfix"></div>
+	<% end %>
+	<% if alert %>
+		<p class="notification alert">
+			<%= alert %>
+		</p>
+		<div class="final-checkout">
+		<h2>Checkout</h2>
+		<div class="checkout-wrapper">
+			<img src="<%= image_path "progress_bar2.png" %>" alt="progress bar 2" width="881" height="53" border="0" />
+			<hr />
+			<h3>Your Order Encountered An Error</h3>
+			<p><%= session[:error_message] %></p>
+
+			<br />
+			<div class="clearfix"></div>
+	<% end %>
+	
+		
+	</div><!-- end sc-wrapper -->
+	</div><!-- end shopping-cart -->
+
+	</div><!-- end content -->

@@ -3,9 +3,12 @@
 <% else %>
 <tr>
 <% end %>
-	<td class="quantity center"><input type="text" name="quantity" size="3" value="<%= line_item.quantity %>" tabindex="1" /></td>
+	<td class="quantity"><input type="text" name="quantity" size="3" value="<%= line_item.quantity %>" tabindex="1" /></td>
 	<td class="name"><%= line_item.product.name %></td>
 	<td class="price"><%= number_to_currency(line_item.product.price) %></td>
 	<td class="extended_price"><%= number_to_currency(line_item.total_price) %></td>
-	<td class="remove center"><%= button_to 'V', decrement_line_item_path(line_item), method: :put, remote: true %> </td>
+	<td class="add-remove">
+		<%= button_to '+', increment_line_item_path(line_item), method: :post, remote: true, form_class: 'add-remove' %>
+		<%= button_to '-', decrement_line_item_path(line_item), method: :post, remote: true, form_class: 'add-remove' %> 
+	</td>
 </tr>

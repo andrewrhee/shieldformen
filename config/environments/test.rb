@@ -34,4 +34,13 @@ Shieldformen::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Makes sure ActiveMerchant runs in test mode in test
+  config.after_initialize do 
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::BogusGateway.new(
+      :login => "65LhZ6uh",
+      :password => "7Jbp6Me549j8z2MG"
+    )
+  end
 end

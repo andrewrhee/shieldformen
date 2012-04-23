@@ -1,0 +1,67 @@
+<div id="content">
+<p id="notice"><%= notice %></p>
+
+<p>
+	<b>First Name:</b>
+	<%= @order.bill_to_first_name %>
+</p>
+
+<p>
+	<b>Last Name:</b>
+	<%= @order.bill_to_last_name %>
+</p>
+
+<p>
+	<b>Address:</b>
+	<%= @order.bill_to_address %>
+</p>
+
+<p>
+	<b>City:</b>
+	<%= @order.bill_to_city %>
+</p>
+
+<p>
+	<b>Postal Code:</b>
+	<%= @order.bill_to_postal_code %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @order.phone_number %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@order.price) %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @order.status %>
+</p>
+
+<% if @order.error_message %>
+<p>
+  <b>Message:</b>
+  <%= @order.error_message %>
+</p>
+<% end %>
+
+</p>
+<% if @order.discounts.any? %>
+	<p>
+	  <b>Discount Code:</b>
+	  <%= render @discounts %>
+	</p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+</div>

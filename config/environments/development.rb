@@ -14,7 +14,19 @@ Shieldformen::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  # Alternate configuration example, using gmail:
+  config.action_mailer.delivery_method = :test
+  #config.action_mailer.smtp_settings = {
+    #address:        "temp.shieldformen.com",
+    #port:           993, 
+    #domain:         "shieldformen.com",
+    #authentication: "plain",
+    #user_name:      "info@shieldformen.com",
+    #password:       "Exc3ll3nc3",
+    #enable_starttls_auto: true
+  #} 
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +46,14 @@ Shieldformen::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+
+  # Makes sure ActiveMerchant runs in test mode in development
+  config.after_initialize do 
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+      :login => "65LhZ6uh",
+      :password => "7Jbp6Me549j8z2MG"
+    )
+  end
 end

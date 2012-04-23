@@ -1,0 +1,91 @@
+<div id="content">  
+	<% if notice %>
+    <p class="notification notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="notification alert">
+      <%= alert %>
+    </p>
+  <% end %>
+	
+	<div class="final-checkout">
+	<h2>Checkout</h2>
+
+	<div class="checkout-wrapper">
+		<div class="checkout-form">
+
+		<%= render 'shoppingcart' %>
+		<img src="<%= image_path "progress_bar1.png" %>" alt="progress bar 1" width="881" height="53" border="0" />
+		<hr />
+		<%= render 'discount' %>
+		
+		<%= render 'billing' %>
+
+		</div><!-- end checkout-form -->
+		<div class="checkout-text">
+		<div class="policies">
+			<h4>Policies</h4>
+			<a href="/privacy" target="_blank">Privacy Policy</a><br/>
+			<a href="/shipping" target="_blank">Shipping Policy</a>
+		</div><!-- end policies -->
+		<hr />
+		<div class="secure-payment">
+			<h4>Secure Payment</h4>
+			<img src="<%= image_path "credit_cards.png" %>" alt="credit cards" width="193" height="35" border="0" />				
+			<img src="<%= image_path "lock.png" %>" alt="lock" width="175" height="26" border="0" />
+		</div><!-- end secure-payment -->
+			
+		</div><!-- end checkout-text -->
+		
+		<div class="clearfix"></div>
+
+		
+		
+		<div class="clearfix"></div>
+		
+	</div><!-- end sc-wrapper -->
+	</div><!-- end shopping-cart -->
+	<script type="text/javascript">
+
+	// on page load
+	$(document).ready(function() {
+		// copy billing to shipping
+    $('input#copyaddress').click(function() {
+
+        // If checked
+        if ($(this).is(":checked")) {
+
+            //for each input field
+            $('#billing_fields input', ':visible', document.body).each(function(i) {
+
+                //copy the values from the shipping inputs
+                //to the equiv inputs on the billing inputs
+                $(this).val($("#shipping_fields input").eq(i).val());
+            });
+
+            //won't work on drop downs, so get those values
+            var ship_to_state = $("select#order_ship_to_state").val();
+
+            // special for the select
+            $('select#order_bill_to_state option[value=' + ship_to_state + ']').attr('selected', 'selected');
+
+        }
+        else {
+
+            //for each input field
+            $('billing_fields input', ':visible', document.body).each(function(i) {
+
+                // put default values back
+                $(this).val($(this)[0].defaultValue);
+            });
+
+            // special for the select
+            $('select#bill_to_state option[value=""]').attr('selected', 'selected');
+
+        } // end if else
+
+    }); // end copy ship to bill function
+	});
+
+	</script>
+</div><!-- end content -->

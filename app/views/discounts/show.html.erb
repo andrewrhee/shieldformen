@@ -1,0 +1,37 @@
+<div id="content">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Discount code:</b>
+  <%= @discount.discount_code %>
+</p>
+
+<p>
+  <b>Site name:</b>
+  <%= @discount.site_name %>
+</p>
+
+<p>
+  <b>Site url:</b>
+  <%= @discount.site_url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @discount.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @discount.user_id %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @discount.order_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_discount_path(@discount) %> |
+<%= link_to 'Back', discounts_path %>
+</div>
