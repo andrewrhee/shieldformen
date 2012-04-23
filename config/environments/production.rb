@@ -81,7 +81,7 @@ Shieldformen::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   # Makes sure ActiveMerchant runs in production mode in production
   config.after_initialize do 
-    ActiveMerchant::Billing::Base.mode = :production
+    ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::AuthorizeNetGateway.new(
       :login => "65LhZ6uh",
       :password => "7Jbp6Me549j8z2MG"
