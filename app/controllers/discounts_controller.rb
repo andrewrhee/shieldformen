@@ -39,21 +39,21 @@ class DiscountsController < ApplicationController
     @discount = Discount.find(params[:id])
   end
 
+
   # POST /discounts
   # POST /discounts.json
   def create
+    @discount = Discount.new(params[:discount])
     @cart = current_cart
-    @order = Order.new(params[:order])
-    @discounts = Discount.new(:discount_code => params[:discount][:discount_code])
-    @discount = @discounts.discount_code.to_s
-
-    unless Discount.find_by_discount_code(@discount).nil?
-      @cart.discount_price
-      session[:discount] = 'true'
-      redirect_to new_order_path, notice: "Valid discount code"
-    else
-      redirect_to new_order_path, alert: "Invalid discount code"
-    end 
+    respond_to do |format|
+      if @discount.save
+        format.html { redirect_to @discount, notice: 'Discount was successfully created.' }
+        format.json { render json: @discount, status: :created, location: @discount }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @discount.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /discounts/1
@@ -84,6 +84,23 @@ class DiscountsController < ApplicationController
       format.html { redirect_to discounts_url }
       format.json { head :no_content }
     end
+  end
+
+  # POST /discounts
+  # POST /discounts.json
+  def apply
+    @cart = current_cart
+    @order = Order.new(params[:order])
+    @discounts = Discount.new(:discount_code => params[:discount][:discount_code])
+    @discount = @discounts.discount_code.to_s
+
+    unless Discount.find_by_discount_code(@discount).nil?
+      @cart.discount_price
+      session[:discount] = 'true'
+      redirect_to new_order_path, notice: "Valid discount code"
+    else
+      redirect_to new_order_path, alert: "Invalid discount code"
+    end 
   end
 
 end

@@ -52,5 +52,10 @@ Shieldformen::Application.routes.draw do
     post 'increment', on: :member
   end
 
+  resources :discounts do
+    post 'apply', on: :member
+  end
+
+
   
 end
