@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'will_paginate', '~> 3.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,12 +29,11 @@ group :test do
 end
 
 group :production do
-	gem 'mysql2'
+	gem 'pg', '0.12.2'
 end
 
 # ActiveMerchant
 gem 'activemerchant', :require  =>'active_merchant'
 
-gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'will_paginate', '~> 3.0'
+
