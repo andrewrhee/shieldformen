@@ -1,25 +1,57 @@
-set :application, "shieldformen"
-set :repository,  "git@github.com:andrewrhee/shieldformen.git"
+#---
+# Excerpted from "Agile Web Development with Rails, 3rd Ed.",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails3 for more book information.
+#---
+# be sure to change these
+set :user, 'root'
+set :domain, 'shieldformen.com'
+set :application, 'shieldformen'
 
-set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+# file paths
+set :repository,  "#{user}@#{domain}:git/#{application}.git" 
+set :deploy_to, "/var/www/vhosts/#{domain}/httpdocs/" 
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# distribute your applications across servers (the instructions below put them
+# all on the same server, defined above as 'domain', adjust as necessary)
+role :app, domain
+role :web, domain
+role :db, domain, :primary => true
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# you might need to set this if you aren't seeing password prompts
+# default_run_options[:pty] = true
+
+# As Capistrano executes in a non-interactive mode and therefore doesn't cause
+# any of your shell profile scripts to be run, the following might be needed
+# if (for example) you have locally installed gems or applications.  Note:
+# this needs to contain the full values for the variables set, not simply
+# the deltas.
+# default_environment['PATH']='<your paths>:/usr/local/bin:/usr/bin:/bin'
+# default_environment['GEM_PATH']='<your paths>:/usr/lib/ruby/gems/1.8'
+
+# miscellaneous options
+set :deploy_via, :copy
+set :scm, 'git'
+set :branch, 'master'
+set :scm_verbose, true
+set :use_sudo, false
+
+# task which causes Passenger to initiate a restart
+namespace :deploy do
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt" 
+  end
+end
+
+# optional task to reconfigure databases
+after "deploy:update_code", :configure_database
+desc "copy database.yml into the current release path"
+task :configure_database, :roles => :app do
+  db_config = "#{deploy_to}/config/database.yml"
+  run "cp #{db_config} #{release_path}/config/database.yml"
+end
