@@ -71,6 +71,7 @@ class Order < ActiveRecord::Base
     total_price = total_price - (total_price * 0.30)
   end
 
+
   def purchase
     response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
     transactions.create!(:action => "purchase", :amount => price_in_cents, 
@@ -78,8 +79,6 @@ class Order < ActiveRecord::Base
     if response.success?
       self.status = 'success'
       self.price = (price_in_cents/100)
-      self.discount_code = discount_code
-      self.discount_price = discount_price
     else
       self.status = 'failure'
       self.error_message = response.message
@@ -95,6 +94,7 @@ class Order < ActiveRecord::Base
     if response.success?
       self.status = 'success'
       self.price = (price_in_cents/100)
+      self.discount = 'true'
       self.discount_code = discount_code
       self.discount_price = discount_price
     else
@@ -104,6 +104,7 @@ class Order < ActiveRecord::Base
     self.save!
     response.success?
   end
+
 
   def price_in_cents
     # cart.line_items.each do |item|

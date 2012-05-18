@@ -9,8 +9,9 @@ gem 'will_paginate', '~> 3.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-	gem 'sqlite3', '1.3.5'
+	gem 'sqlite3', '1.3.6'
 	gem 'rspec-rails', '2.9.0'
+	gem 'capistrano', '~>2.12.0'
 end
 
 
@@ -29,7 +30,8 @@ group :test do
 end
 
 group :production do
-	gem 'pg', '0.12.2'
+	gem 'mysql2'
+	gem 'passenger', '3.0.12'
 end
 
 # ActiveMerchant

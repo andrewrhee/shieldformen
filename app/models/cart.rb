@@ -18,7 +18,6 @@ class Cart < ActiveRecord::Base
   end
 
   def discount_price
-    
     total_price = line_items.to_a.sum { |item| item.total_price }
     total_price = total_price - (total_price * 0.30)
   end

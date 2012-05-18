@@ -1,6 +1,7 @@
 <% if flash[:alert] %>
 	<p id="notice"><%= flash[:alert] %></p>
 <% end %>
+
 <%= form_for @discount, :url => apply_discount_path(:discount_code) do |f| %>
 <p>
 	<%= f.label :discount_code, 'Discount Code:' %>

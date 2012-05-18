@@ -13,27 +13,33 @@
 
   <div class="field">
     <%= f.label :discount_code %><br />
-    <%= f.text_field :discount_code %>
+    <%= f.text_field :discount_code, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :site_name %><br />
-    <%= f.text_field :site_name %>
+    <%= f.text_field :site_name, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :site_url %><br />
-    <%= f.text_field :site_url %>
+    <%= f.text_field :site_url, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size => 50,
+              :class => 'formInputTextArea' %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :order_id %><br />
-    <%= f.number_field :order_id %>
+    <%= f.number_field :order_id, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,5 +1,5 @@
 class DiscountsController < ApplicationController
-  skip_before_filter :authorize, only: :test
+  skip_before_filter :authorize, only: :apply
   # GET /discounts
   # GET /discounts.json
   def index
@@ -97,9 +97,11 @@ class DiscountsController < ApplicationController
     unless Discount.find_by_discount_code(@discount).nil?
       @cart.discount_price
       session[:discount] = 'true'
-      redirect_to new_order_path, notice: "Valid discount code"
+      
+      
+      redirect_to new_order_path, notice: 'Valid discount code.'
     else
-      redirect_to new_order_path, alert: "Invalid discount code"
+      redirect_to new_order_path, alert: 'Invalid discount code'
     end 
   end
 

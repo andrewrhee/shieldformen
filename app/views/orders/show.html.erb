@@ -2,6 +2,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<b>Date/Time</b>
+	<%= @order.created_at %>
+</p>
+
+<p>
 	<b>First Name:</b>
 	<%= @order.bill_to_first_name %>
 </p>
@@ -45,6 +50,13 @@
   <b>Status:</b>
   <%= @order.status %>
 </p>
+
+<% if @order.discount_code %>
+<p>
+	<b>Discount Code:</b>
+	<%= @order.discount_code %>
+</p>
+<% end %>
 
 <% if @order.error_message %>
 <p>

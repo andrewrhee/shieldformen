@@ -149,7 +149,7 @@ p {
 	
 	
 	#banner {
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 960px;
 	height: 325px;
 	}
@@ -637,6 +637,38 @@ input.formInputText:focus {
 	 -moz-border-radius: 3px;
 	border-radius: 3px;
 	}
+.formInputTextArea   {
+	font-size: 11px;
+	background-color: #ededed;
+ 	border: solid 1px #c7c7c7;
+	 -moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #666;
+	padding: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	height: 150px;
+	resize: none;
+	}
+
+
+.formInputTextArea:hover {
+	background-color: #ffffff;
+	border: solid 1px #c7c7c7;
+	color: #223953;
+	cursor: pointer;
+	 -moz-border-radius: 3px;
+	border-radius: 3px;
+	}
+	
+.formInputTextArea:focus {
+	color: #000;
+	background-color: #ffffff;
+	border: solid 1px #c7c7c7;
+	cursor: text;
+	 -moz-border-radius: 3px;
+	border-radius: 3px;
+	}
 select.expSelect {
 	font-size: 11px;
 	background-color: #ededed;
@@ -1076,28 +1108,8 @@ a.nivo-prevNav {
 .glossary {
   width:700px!important;
 }
-
-.glossary table{
-  width:700px!important;
-} 
-.glossary table tr td{
-  padding:10px;
-} 
-
-.glossary table thead tr{
-  color:#fff;
-  background:#5e5b59;
-}
-
-.glossary table tr.evenRow{ 
-  background:#dddddd;
-}
-.glossary table tr.selected{  
-  background:#dddddd;
-}
-.glossary table tr.selected td strong,
-.glossary table tr.selected td{  
-  font-weight:bold;
+.glossary table {
+	width: 700px;
 }
 
 
@@ -1495,89 +1507,76 @@ font-weight:normal !important;
 }
 
 
-/* tabbed_box */
+/* tabs */
 
-.tabbed_box {
-	margin: 0px auto 0px auto;
-	width:500px;
+.box {
 	float: left;
+	width: 500px;
 }
 
-.tabbed_area {
-	padding:8px;
+/* root element for tabs  */
+ul.css-tabs {
+    margin:0 !important;
+    padding:0;
+    height:30px;
+    border-bottom:1px solid #666;
 }
 
-ul.tabs {
-	margin:0px; padding:0px;
-}
-ul.tabs li {
-	list-style:none;
-	display:inline;
-}
-ul.tabs li a {
-	background-color:#6e6d73;
-	color:#fff;
-	padding:8px 14px 8px 14px;
-	text-decoration:none;
-	font-size:12px;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
-	font-weight:bold;
-	text-transform:uppercase;
-	border:1px solid #464c54;
-}
-ul.tabs li a:hover {
-	background-color:#bcbdbe;
-	color: #fff;
-	border-top-color:#2f343a;
-	border-left-color:#2f343a;
-	border-right-color:#2f343a;
-}
-ul.tabs li a.active {
-	background-color:#ffffff;
-	color:#282e32;
-	border:1px solid #464c54;
-	border-bottom: 1px solid #ffffff;
+/* single tab */
+ul.css-tabs li {
+    float:left;
+    padding:0;
+    margin:0;
+    list-style-type:none;
 }
 
-.content {
-	background-color:#ffffff;
-	padding:10px;
-	border:1px solid #464c54;
+/* link inside the tab. uses a background image */
+ul.css-tabs a {
+    float:left;
+    font-size:13px;
+    display:block;
+    padding:5px 30px;
+    text-decoration:none;
+    border:1px solid #666;
+    border-bottom:0px;
+    height:18px;
+    background-color:#efefef;
+    color:#777;
+    margin-right:2px;
+    position:relative;
+    top:1px;
+    outline:0;
+    -moz-border-radius:4px 4px 0 0;
+    font-weight: bold;
 }
-#content_2, #content_3 { display:none; }
 
-ul.tabs {
-	margin:0px; padding:0px;
-	margin-top:5px;
-	margin-bottom:4px;
+ul.css-tabs a:hover {
+    background-color:#b7b7b7;
+    color:#333;
 }
-.content ul {
-	margin:0px;
-	padding:0px 20px 0px 20px;
+
+/* selected tab */
+ul.css-tabs a.current {
+    background-color:#f5f5f5;
+    border-bottom:1px solid #f5f5f5;
+    color:#000;
+    font-weight: bold;
+    cursor:default;
 }
-.content ul li {
-	list-style:none;
-	border-bottom:1px solid #d6dde0;
-	padding-top:15px;
-	padding-bottom:15px;
-	font-size:13px;
+
+
+/* tab pane */
+.css-panes div {
+    display:none;
+    border:1px solid #666;
+    border-width:0 1px 1px 1px;
+    min-height:150px;
+    padding:15px 20px;
+    background-color:#f5f5f5;
 }
-.content ul li a {
-	text-decoration:none;
-	color:#3e4346;
-}
-.content ul li a small {
-	color:#8b959c;
-	font-size:9px;
-	text-transform:uppercase;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
-	position:relative;
-	left:4px;
-	top:0px;
-}
-.content ul li:last-child {
-	border-bottom:none;
-}
+
+
+
 
 /* how-it-works */
 
@@ -1809,4 +1808,160 @@ ul.tabs {
     list-style: none;
     margin: 0 0 18px 0;
   }
+}
+
+/* table */
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 820px;
+		margin: 20px 0;
+		background-color: #fff;
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #9ac721;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #eaecec;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfeff), to(#eaecec));
+    background-image: -webkit-linear-gradient(top, #fdfeff, #eaecec);
+    background-image:    -moz-linear-gradient(top, #fdfeff, #eaecec);
+    background-image:     -ms-linear-gradient(top, #fdfeff, #eaecec);
+    background-image:      -o-linear-gradient(top, #fdfeff, #eaecec);
+    background-image:         linear-gradient(top, #fdfeff, #eaecec);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+	font-weight: bold;
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+
+
+/*----------------------*/
+
+.zebra td, .zebra th {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;    
+}
+
+.zebra tbody tr:nth-child(even) {
+    background: #f5f5f5;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+}
+
+.zebra th {
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+    border-bottom: 1px solid #ccc;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eee));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #eee);
+    background-image:    -moz-linear-gradient(top, #f5f5f5, #eee);
+    background-image:     -ms-linear-gradient(top, #f5f5f5, #eee);
+    background-image:      -o-linear-gradient(top, #f5f5f5, #eee); 
+    background-image:         linear-gradient(top, #f5f5f5, #eee);
+}
+
+.zebra th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;  
+}
+
+.zebra th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.zebra th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.zebra tfoot td {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    background-color: #f1f1f1;  
+}
+
+.zebra tfoot td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.zebra tfoot td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.zebra tfoot td:only-child{
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
 }

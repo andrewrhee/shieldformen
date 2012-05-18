@@ -90,5 +90,7 @@ class ProductsController < ApplicationController
       format.atom
     end
   end
+
+  
   
 end

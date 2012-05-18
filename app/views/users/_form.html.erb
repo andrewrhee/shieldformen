@@ -15,15 +15,18 @@
   <legend>Enter User Details</legend>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, size: 40 %>
+    <%= f.text_field :name, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :password, 'Password' %><br />
-    <%= f.password_field :password, size: 40 %>
+    <%= f.password_field :password, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, 'Confirm' %><br />
-    <%= f.password_field :password_confirmation, size: 40 %>
+    <%= f.password_field :password_confirmation, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="actions">
     <%= f.submit %>

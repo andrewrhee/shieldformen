@@ -60,21 +60,21 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.customer_ip = request.remote_ip
     @order.add_line_items_from_cart(current_cart)
-    @discounts = @order.discounts.paginate(page: params[:page])
-    @discount = Discount.new
-
+    
     respond_to do |format|
       if @order.save
-        if session[:discount] = 'true'
+        if session[:discount] == 'true'
           if @order.discount_purchase
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
             session[:order_id] = @order.id
             session[:order_price] = @order.discount_price
+
             OrderNotifier.received(@order).deliver
             format.html { redirect_to confirmation_url, notice: 'Thank you for your order.' }
             format.json { render json: @order, status: :created, location: @order }
             session[:discount] = nil
+          
           else
             @cart = current_cart
             session[:error_message] = @order.error_message
@@ -88,6 +88,7 @@ class OrdersController < ApplicationController
             session[:cart_id] = nil
             session[:order_id] = @order.order_id
             session[:order_price] = @order.price
+
             OrderNotifier.received(@order).deliver
             format.html { redirect_to confirmation_url, notice: 'Thank you for your order.' }
             format.json { render json: @order, status: :created, location: @order }

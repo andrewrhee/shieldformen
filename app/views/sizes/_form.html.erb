@@ -13,11 +13,13 @@
 
   <div class="field">
     <%= f.label :size %><br />
-    <%= f.text_field :size %>
+    <%= f.text_field :size, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
+    <%= f.number_field :product_id, :size => 50, 
+              :class => 'formInputText' %>
   </div>
   <div class="actions">
     <%= f.submit %>

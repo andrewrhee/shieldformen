@@ -43,15 +43,15 @@
       <a href="#"><img src="<%= image_path "thumbnail.png" %>" alt="thumbnail" width="59" height="60" border="0" /></a>
     </div><!-- end image-thumbnails -->
   
-    <div id="tabbed_box_1" class="tabbed_box">
-    <div class="tabbed_area">
-    
-      <ul class="tabs">
-        <li><a href="#" title="content_1" class="tab active">Description</a></li>
-        <li><a href="#" title="content_2" class="tab">Key Ingredients</a></li>
+    <div class="box">
+
+      <ul class="css-tabs">
+        <li><a href="#content_1" title="content_1" class="tab active">Description</a></li>
+        <li><a href="#content_2" title="content_2" class="tab">Key Ingredients</a></li>
       </ul>
+
     
-  
+    <div class="css-panes">
       <div id="content_1" class="content">
         <%= strip_tags(@product.description) %>
       </div><!-- end description -->
@@ -60,14 +60,22 @@
       <div id="content_2" class="content">
         <p><ul><li><strong>Vitamin E</strong> - anti-inflammatory, antioxidant, emollient</li><li><strong>Pro-vitamin B</strong> – soothing, calming</li><li><strong>Tea Tree Oil</strong> – medicinal: acne, burns, rashes, skin immune deficiencies, and sebum regulation for oily skin</li><li><strong>Green Tea Extract</strong> – antioxidant, soothing anti-inflammatory</li><li><strong>Ylang Ylang E.O.</strong> – antibacterial, antiseptic, anti-sebum</li><li><strong>Patchouli E.O.</strong> – anti bacterial, anti-inflammatory, antiseptic, antistringent, cell-regenerating</li><li><strong>Rosewood E.O.</strong> – cell regenerator, antiseptic</li><li><strong>Cedarwood E.O.</strong> – regenerative, cleansing</li></ul></p>
       </div><!-- end ingredients -->
+    </div><!-- end content -->
       
       
-    </div><!-- end tabbed_area -->
-    </div><!-- end tabbed_box_1 -->
+    </div><!-- end box -->
   
   <div class="clearfix"></div>
+<script type="text/javascript" src="https://s3.amazonaws.com/static.appsumo.com/2a53a3e5fd6cd4652e9a13a51fbf54b899978bd4/js/jquery.tools.min.js"></script>
 
-  
+<!-- activate tabs with JavaScript -->
+<script>
+  $(function() {
+  // :first selector is optional if you have only one tabs on the page
+  $(".css-tabs:first").tabs(".css-panes:first > div");
+  });
+</script>
+
   
 </div><!-- end content -->
 <div class="clearfix"></div>

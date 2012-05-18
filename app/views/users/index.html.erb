@@ -3,14 +3,14 @@
 <% if notice %>
   <p id="notice"><%= notice %></p>
 <% end %>
-<table>
+<table class="bordered">
   <tr>
     <th>Id</th>
     <th>Name</th>
     <th>Password digest</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
 
 <% @users.each do |user| %>
